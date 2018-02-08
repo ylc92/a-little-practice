@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0 0 0 10px;
+				background: rgba(0,0,0,0.1);
+			}
+			i{
+				font-style: normal;
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				font: 13px/30px "微软雅黑";
+				cursor: pointer;
+			}
+			.span{
+				font: bold 20px/40px "微软雅黑";
+				color: #000;
+			}
+			.btn{
+				width: 100px;
+				height: 34px;
+				background: red;
+				color: #fff;
+				font: 12px/20px "微软雅黑";
+				border: 0;
+				outline: none;
+				cursor: pointer;
+			}
+			.div{
+				width: 100px;
+				height: 100px;
+				border: 2px solid #000;
+				margin-top: 10px;
+			}
+			.cover{
+				background: rgba(0,0,0,0.3);
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.box{
+				width: 300px;
+				border: 20px solid #ccc;
+				text-align: center;
+				padding: 10px;
+				background: #fff;
+				position: absolute;
+				top: 100px;
+				left: 420px;
+			}
+			.same{
+				padding: 5px 0;
+			}
+			.text{
+				font: 16px/22px "微软雅黑";
+				color: #000;
+			}
+			.color .i-1{
+				border: 1px solid transparent;
+				background: greenyellow;
+				color: #fff;
+			}
+			.color .i-1:hover{
+				border: 1px solid #000;
+				background: red;
+			}
+			.color .i-2{
+				border: 1px solid transparent;
+				background: #fced01;
+				color: #fff;
+			}
+			.color .i-2:hover{
+				border: 1px solid #000;
+				background: yellow;
+			}
+			.color .i-3{
+				border: 1px solid transparent;
+				background: royalblue;
+				color: #fff;
+			}
+			.color .i-3:hover{
+				border: 1px solid #000;
+				background: blue;
+			}
+			.size i{
+				border: 1px solid #999;
+				background: #ddd;
+				color: #999;
+			}
+			.size i:hover{
+				border: 1px solid #000;
+				background: #e29322;
+				color: #000;
+			}
+			.input{
+				font: 16px/28px "宋体";
+				color: #fff;
+				border: 0;
+				outline: none;
+				cursor: pointer;
+				background: #0f0083;
+				padding: 0 15px;
+				margin: 15px 0 5px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="cover" id="cover">
+			<div class="box" id="box">
+				<div class="color same">
+					<span class="text">请选择背景色：</span>
+					<i class="i-1" id="red">红</i>
+					<i class="i-2" id="yellow">黄</i>
+					<i class="i-3" id="blue">蓝</i>
+				</div>
+				<div class="width same size">
+					<span class="text">请选择宽(px)：</span>
+					<i class="i-1" id="wt1">200</i>
+					<i class="i-2" id="wt2">300</i>
+					<i class="i-3" id="wt3">400</i>
+				</div>
+				<div class="height same size">
+					<span class="text">请选择高(px)：</span>
+					<i class="i-1" id="ht1">200</i>
+					<i class="i-2" id="ht2">300</i>
+					<i class="i-3" id="ht3">400</i>
+				</div>
+				<button class="btn1 input" id="btn1">恢复</button>
+				<button class="btn2 input" id="btn2">确定</button>
+			</div>
+		</div>
+		
+		<span class="span">请为下面的DIV设置样式：</span>
+		<button class="btn" id="btn">点击设置</button>
+		<div class="div" id="div"></div>	
+		
+		
+		
+		<script type="text/javascript">
+			var btn = document.getElementById('btn');
+			var box = document.getElementById('box');
+			var cover = document.getElementById('cover');
+			var div = document.getElementById('div');
+			var red = document.getElementById('red');
+			var yellow = document.getElementById('yellow');
+			var blue = document.getElementById('blue');
+			var wt1 = document.getElementById('wt1');
+			var wt2 = document.getElementById('wt2');
+			var wt3 = document.getElementById('wt3');
+			var ht1 = document.getElementById('ht1');
+			var ht2 = document.getElementById('ht2');
+			var ht3 = document.getElementById('ht3');
+			var btn1 = document.getElementById('btn1');
+			
+			btn.onclick = function(){
+				cover.style.display = 'block';
+			}
+			red.onclick = function(){
+				div.style.background = 'red';
+			}
+			yellow.onclick = function(){
+				div.style.background = 'yellow';
+			}
+			blue.onclick = function(){
+				div.style.background = 'blue';
+			}
+			wt1.onclick = function(){
+				div.style.width = '200px';
+			}
+			wt2.onclick = function(){
+				div.style.width = '300px';
+			}
+			wt3.onclick = function(){
+				div.style.width = '400px';
+			}
+			ht1.onclick = function(){
+				div.style.height = '200px';
+			}
+			ht2.onclick = function(){
+				div.style.height = '300px';
+			}
+			ht3.onclick = function(){
+				div.style.height = '400px';
+			}
+			btn1.onclick = function(){
+//				div.style.cssText = 'width:100px;height:100px;background:none;';
+				div.style.cssText = '';
+			}
+			btn2.onclick = function(){
+				cover.style.display = 'none';
+			}
+			
+		</script>
+		
+	</body>
+</html>
