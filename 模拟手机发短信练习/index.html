@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.bgd{
+				width: 500px;
+				height: 650px;
+				background: url(img/bg.jpg);
+				margin: 5px auto;
+				position: relative;
+			}
+			.phone{
+				width: 300px;
+				height: 550px;
+				background: rgba(255,255,255,0.5);
+				border-radius: 20px;
+				box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.4);
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+			}
+			.top{
+				width: 50px;
+				height: 0;
+				border: 2px solid rgba(0,0,0,0.3);
+				border-radius: 4px;
+				margin: 20px auto 0;
+			}
+			.content{
+				margin: 20px;
+				width: 260px;
+				height: 420px;
+				border: 2px solid rgba(0,0,0,0.3);
+				background: #fff;
+			}
+			.content .box{
+				width: 100%;
+				height: 350px;
+				padding: 10px 0;
+				background: #fff;
+				overflow: auto;
+			}
+			.box:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			.content .bar{
+				width: 100%;
+				height: 50px;
+				background: #dfdfdf;
+			}
+			.bar img{
+				padding: 5px 10px;
+				vertical-align: top;
+			}
+			.bar .text{
+				outline: none;
+				border: 0;
+				width: 145px;
+				height: 34px;
+				border-radius: 7px;
+				margin-top: 7px;
+				padding-left: 5px;
+			}
+			.bar .btn{
+				outline: none;
+				border: 0;
+				font: 14px/48px "微软雅黑";
+				color: #f62323;
+				background: transparent;
+				cursor: pointer;
+			}
+			.logo{
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                background-color: #888;
+                border-radius: 50%;
+                margin-left: 120px;
+			}
+			#ul1 li img{
+				width: 35px;
+				height: 35px;
+				margin: 10px 0 10px 10px;
+			}
+			#ul1 li span{
+				max-width: 120px;
+				background-color: #e1e1e1;
+				font: 12px/26px "微软雅黑";
+				color: #000000;
+				display: inline-block;
+				margin: 10px 10px 0 10px;
+				padding:  0 5px;
+				word-wrap: break-word;
+				border-radius: 5px;
+			}
+			.lis:after{
+				content: "";
+				clear: both;
+				display: block;
+			}
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bgd">
+			<div class="phone">
+				<div class="top"></div>
+				<div class="content">
+					<div class="box">
+						<ul id="ul1" class="ul1"></ul>
+					</div>
+					<div class="bar">
+						<img id="img" src="img/lico.png"/>
+						<input type="text" placeholder="请输入" id="text" class="text" />
+						<input type="button" id="btn" value="发送" class="btn" />
+					</div>
+				</div>
+                <div class="logo"></div>
+				<!-- <img class="logo" src="img/miaov.png"/> -->
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			let btn = document.getElementById('btn');
+			let text = document.getElementById('text');
+			let ul1 = document.getElementById('ul1');
+			let img = document.getElementById('img');
+			let lis = document.getElementsByTagName('li');
+			
+			let onOff = true;
+			
+            //点击图片切换事件
+			img.onclick = function(){
+					
+				if(onOff==true){
+					img.src = 'img/rico.png';
+					onOff = false;
+				}else{
+					img.src = 'img/lico.png';
+					onOff = true;
+				}
+				
+			}
+			
+            //发送按钮
+			btn.onclick = function(){
+				
+				let str = text.value;
+				
+				if(str ==''){
+					alert('亲，写点什么呗！');
+				}else{		
+					let tClass = '';
+					if(onOff==true){
+                        //蓝色图标时，消息在左侧
+						tClass = 'left';
+						text.value='';
+					}else{
+                        //红色图标时，消息在右侧
+						tClass = 'right';
+						text.value='';
+					}
+					//每个li里面的样式
+					str = `<li class="lis">
+        						<img src="${img.src}" class="${tClass}" />
+        						<span class="${tClass}">${str}</span>
+        					</li>`;
+					
+					ul1.innerHTML = str + ul1.innerHTML;
+				}
+				
+			}
+			
+		</script>
+		
+	</body>
+</html>
