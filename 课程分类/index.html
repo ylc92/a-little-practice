@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			img{
+				vertical-align: top;
+			}
+			.bg{
+				width: 700px;
+				height: 650px;
+				background: url(img/bg.jpg) no-repeat;
+				margin: 5px auto;
+				position: relative;
+			}
+			.box{
+				width: 450px;
+				height: 258px;
+				background: #321c1f;
+				border-radius: 5px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+			}
+			.same{
+				width: 100%;	
+				line-height: 32px;		
+			}
+			.box1{
+				height: 86px;
+				background: #fff;
+				border-radius: 5px 5px 0 0;
+				font: 24px/85px "微软雅黑";
+				color: #dc4961;
+				text-align: center;
+			}
+			.box2{
+				height: 86px;
+				border-bottom: 1px dashed #fcfcfc;
+				padding-left: 20px;
+				width: 430px;
+			}
+			.box3{
+				height: 86px;
+				padding-left: 20px;
+				width: 430px;
+			}
+			.item1{   
+				padding-top: 20px;
+				/*display: none;*/
+			}
+			.item1 span{   				
+				display: inline-block;
+				font: 14px/32px "微软雅黑";
+				color: #fff;
+				padding: 0 5px;
+			}
+			.item1 img{  
+				vertical-align: middle;
+				padding-left: 12px;
+				cursor: pointer;
+			}
+			.item2{
+				padding-top: 20px;
+				display: none;
+			}
+			.item2 .text{
+				outline: none;
+				border: 1px solid #dc4961;
+				line-height: 30px;
+				width: 200px;
+				padding-left: 5px;
+				border-radius: 3px;
+			}
+			.item2 .btn{
+				outline: none;
+				width: 50px;
+				background: #dc4961;
+				font: 14px/32px "微软雅黑";
+				color: #fff;
+				border: none;
+				cursor: pointer;
+				border-radius: 3px;
+			}
+			.item2 input{
+				vertical-align: top;
+				margin-right: 3px;
+			}
+			.none{
+				display: none;
+			}
+			.block{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg">
+			<div class="box">
+				<div class="box1 same">课程分类</div>
+				<div class="box2 same">
+					<div id="main1" class="item1">
+						<span id="span1">欢迎来到hello world</span>
+						<img id="img1" src="img/l.png"/>
+					</div>	
+					<div id="main11" class="item2">
+						<input class="text" id="text1" type="text" placeholder="欢迎来到妙味课堂" />
+						<input class="btn" id="yes1" type="button" value="确定" />
+						<input class="btn" id="no1" type="button" value="取消" />
+					</div>
+				</div>
+				<div class="box3 same">
+					<div id="main2" class="item1">
+						<span id="span2">欢迎来到hello world</span>
+						<img id="img2" src="img/l.png"/>
+					</div>
+					<div id="main22" class="item2">
+						<input class="text" id="text2" type="text" placeholder="欢迎来到妙味课堂" />
+						<input class="btn" id="yes2" type="button" value="确定" />
+						<input class="btn" id="no2" type="button" value="取消" />
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var img1 = document.getElementById('img1');
+			var main1 = document.getElementById('main1');
+			var main11 = document.getElementById('main11');
+			var yes1 = document.getElementById('yes1');
+			var no1 = document.getElementById('no1');
+			var text1 = document.getElementById('text1');
+			var span1 = document.getElementById('span1');
+			
+			var img2 = document.getElementById('img2');
+			var main2 = document.getElementById('main2');
+			var main22 = document.getElementById('main22');
+			var yes2 = document.getElementById('yes2');
+			var no2 = document.getElementById('no2');
+			var text2 = document.getElementById('text2');
+			var span2 = document.getElementById('span2');
+			
+		//第一个黑色方块
+			//点击图标隐藏显示
+			img1.onclick = function(){
+				main1.style.display = 'none';
+				main11.style.display = 'block';
+			}
+			//确认按钮
+			yes1.onclick = function(){
+							
+				//第一块内容显示
+				main1.style.display = 'block';
+				//第二块内容隐藏
+				main11.style.display = 'none';
+				
+				//文本框为空值时，有弹框提示
+				if(text1.value==''){
+					alert('请输入内容');
+					span1.innerHTML = '欢迎来到妙味课堂';
+				}else{
+					//文本框不为空时，span1为 text1.value值
+					span1.innerHTML = text1.value;
+				}				
+			}
+			//取消按钮
+			no1.onclick = function(){
+				main1.style.display = 'block';
+				main11.style.display = 'none';
+			}
+			
+		//第二个黑色方块
+			//点击图标隐藏显示
+			img2.onclick = function(){
+				main2.style.display = 'none';
+				main22.style.display = 'block';
+			}
+			//确认按钮
+			yes2.onclick = function(){
+							
+				//第一块内容显示
+				main2.style.display = 'block';
+				//第二块内容隐藏
+				main22.style.display = 'none';
+				
+				//文本框为空值时，有弹框提示
+				if(text2.value==''){
+					alert('请输入内容');
+					span2.innerHTML = '欢迎来到妙味课堂';
+				}else{
+					//文本框不为空时，span1为 text1.value值
+					span2.innerHTML = text2.value;
+				}				
+			}
+			//取消按钮
+			no2.onclick = function(){
+				main2.style.display = 'block';
+				main22.style.display = 'none';
+			}
+			
+		</script>
+		
+		<!--点击图片img，  item1隐藏，item2显示		
+		  点击确定，item2隐藏，item1显示    
+		   并且把item2中的text.value值赋给span
+		   item2中的text.value值为空时，弹出提示框
+		 点击取消，item2隐藏，item1显示 -->
+		
+	</body>
+</html>
