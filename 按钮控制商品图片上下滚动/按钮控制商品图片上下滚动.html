@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			.bg{
+				width: 440px;
+				/*height: ;*/
+				border: 2px solid #ccc;
+				margin: 7px auto;				
+			}
+			#box{
+				width: 440px;
+				height: 580px;
+				overflow: hidden;
+				position: relative;
+			}
+			input{
+				width: 440px;
+				height: 30px;
+				text-align: center;
+				border: none;
+				cursor: pointer;
+			}
+			img{
+				vertical-align: top;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg">
+			<!--向上按钮-->
+			<input type="button" value="向上按钮" />
+			<div id="box">
+				<!--图片-->
+				<img src="img/666.jpeg"/>
+			</div>				
+			<!--向下按钮-->
+			<input type="button" value="向下按钮" />
+		</div>
+		<script type="text/javascript">
+			
+			var btns = document.querySelectorAll('input');
+			var oImg = document.querySelector('img');
+			var box = document.getElementById('box');
+			let timer;
+			let num=0;
+			
+		//向下按钮	
+			//按下效果
+			btns[1].onmousedown = function(){
+				timer = setInterval(function(){
+					num++;
+					if(num<=2400){
+						oImg.style.top = -num + 'px';
+					}else{
+						clearInterval(timer);
+					}
+				},5);	
+			}
+			//抬起效果
+			btns[1].onmouseup = function(){
+		        clearInterval(timer);
+		        console.log(num)		     
+		    }
+			
+		//向上按钮
+			//按下效果
+			btns[0].onmousedown = function(){
+				timer = setInterval(function(){
+					num--;
+					if(num>0){
+						oImg.style.top = -num + 'px';
+					}else{
+						clearInterval(timer);
+					}
+				},5);
+			}
+			//抬起效果
+			btns[0].onmouseup = function(){
+		        clearInterval(timer);
+		        console.log(num)		     
+		    }
+			
+		</script>
+	</body>
+</html>
