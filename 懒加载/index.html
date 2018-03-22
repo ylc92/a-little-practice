@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+			    margin: 0;
+			    padding: 0;
+			}
+			#ul{
+			    list-style: none;
+			    width: 560px;
+			    border: 1px solid #000;
+			    overflow: hidden;
+			}
+			li{
+			    width:260px;
+			    height: 200px;
+			    float: left;
+			    margin: 10px;
+			    opacity: 0;
+			    transition: 1s;
+			}
+			img{
+			    width:260px;
+			    height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ul">
+	        <!--<li><img src="img/0.jpg"></li>
+	        <li><img src="img/0.jpg"></li>
+	        <li><img src="img/0.jpg"></li>
+	        <li><img src="img/0.jpg"></li> -->
+	    </ul>
+	    
+	    <script type="text/javascript">
+	    	
+	    	let oUl = document.getElementById('ul');
+	    	let str = '';
+	    	let num =0;
+	    	
+	    	for(var i=0;i<40;i++){   //不用走li创建、存入、添加的流程
+	    		//创建li标签
+//	    		let aLi = document.createElement('li');
+	    		//li里存入img
+//	    		aLi.innerHTML = '<img src="">';
+	    		//ul添加li
+//	    		oUl.appendChild(aLi);
+	    		//输出img
+	    		str += '<li><img src="'+'img/' +i%10+ '.jpg'+'"></li>';
+	    	}
+	    	oUl.innerHTML = str;
+	    	
+	    	let aLi = Array.from(document.getElementsByTagName('li'));
+	    	let iH = window.innerHeight;  //可视区的高度
+	    	
+	    	
+	    	function fn(){
+	    		aLi.forEach(function(e){	    			
+	    			if(e.getBoundingClientRect().top <= iH){  //当li上边框到页面顶部的距离小于可视区的高度时，让图片显示
+	    				e.style.opacity = 1;
+	    				console.log(e.children[0])
+	    			}
+	    		});
+	    	}
+	    				
+	    	fn();  //先调用，使页面在滚动事件之前有图片
+	    	window.onscroll = function(){	    		
+				fn();	    				
+	    	}
+	    </script>
+	    
+	</body>
+</html>
