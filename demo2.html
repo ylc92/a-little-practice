@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<img src="wenjian.png" class="img"/>
+		<script type="text/javascript">
+			
+			var img = document.querySelector('.img');
+			var body = document.getElementById('body');
+			let disX = 0;
+			let disY = 0;
+			let actX = 0;
+			let actY = 0;
+			
+			img.onmousedown = function(ev){
+				disX = ev.pageX - img.offsetLeft; 
+				disY = ev.pageY - img.offsetTop;
+				
+				let cloneImg = img.cloneNode(true);
+				cloneImg.style.opacity = .5;
+				body.appendChild(cloneImg);
+				
+				document.onmousemove = function(e){
+					cloneImg.style.left = e.pageX - disX + 'px';
+					cloneImg.style.top = e.pageY - disY + 'px';
+					
+					//存分身的位置，给真身用
+					actX = e.pageX - disX;
+					actY = e.pageY - disY;
+				}
+				
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					cloneImg.remove();
+					img.style.left = actX + 'px';
+					img.style.top = actY + 'px';
+				}
+				
+				return false;
+			}
+			
+		</script>
+	</body>
+</html>
