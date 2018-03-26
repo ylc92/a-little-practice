@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <select id="selc" name="">
+        <option value="1">回车</option>
+        <option value="2">回车 + shift</option>
+        <option value="3">回车 + shift + alt</option>
+    </select>
+    <input id="txt" type="text" value="" placeholder="">
+    <ul id="ul">
+        
+    </ul>
+
+    <script type="text/javascript">
+        
+        var txt = document.getElementById('txt');   
+        var selc = document.getElementById('selc');
+        var ul = document.getElementById('ul');
+        let v = '1';   // 初始值为回车
+
+        selc.onchange=function(){   // 下拉菜单发生变化的时候获取当前value值          
+            v = this.value;   //  改v的值
+            console.log(v);       
+        }
+
+        txt.onkeydown = function(ev){ 
+            switch(v){
+                case '1':
+                    if(ev.keyCode == 13){
+                        let li = document.createElement('li');
+                        li.innerText = this.value;
+                        ul.insertBefore(li, ul.children[0]);
+                        this.value = '';
+                    }
+                break;
+                case '2':
+                    if(ev.keyCode == 13 && ev.shiftKey == true){
+                        let li = document.createElement('li');
+                        li.innerText = this.value;
+                        ul.insertBefore(li, ul.children[0]);
+                        this.value = '';
+                    }
+                break;
+                case '3':
+                    if(ev.keyCode == 13 && ev.shiftKey == true && ev.altKey == true){
+                        let li = document.createElement('li');
+                        li.innerText = this.value;
+                        ul.insertBefore(li, ul.children[0]);
+                        this.value = '';
+                    }
+                break;
+            }
+        }
+
+    </script>
+</body>
+</html>
